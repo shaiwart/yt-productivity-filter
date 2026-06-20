@@ -58,7 +58,7 @@ document.getElementById('add-channel').addEventListener('click', () => {
 
 
 // Handle the YouTube Shorts toggle
-function handleShortsToggle() {
+function initShortsToggle() {
     const shortsToggle = document.getElementById('shorts-toggle');
 
     // Load the saved state of the toggle on load
@@ -76,7 +76,7 @@ function handleShortsToggle() {
 
 
 // Handle the overall video blocking toggle
-function handleActivateFilterToggle() {
+function initFilterToggle() {
     const activateFilterToggle = document.getElementById('activate-filter-toggle');
 
     // Load the saved state of the toggle on load
@@ -121,6 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderAllowedChannels(storedChannels);  // Render the current channels list
     });
 
-    handleShortsToggle();
-    handleActivateFilterToggle();
+    initShortsToggle();
+    initFilterToggle();
 });
