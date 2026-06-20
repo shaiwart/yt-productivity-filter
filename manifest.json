@@ -1,0 +1,19 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "images/icon128.png"
+      },
+      "default_popup": "popup.html"
+   },
+   "content_scripts": [ {
+      "js": [ "content.js" ],
+      "matches": [ "*://*.youtube.com/*" ]
+   } ],
+   "description": "Only allow videos from your favorite channels and block YouTube Shorts. Stay Focused!",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuAENdNExXtGhh1aKBXP0nZhNddfkiCsuPvc5bL/gwL+vDs4mqDZg6Zey0t4Is4ScQCiuYmFFoOFW2+R/yOrSGGe46Q5y9zXqYdo58EzSVgrJVslx2O+xZTyVaN2ohV90GAG24sf3dWzRwyHI/qDmrGf3Wz+H5g8faK9YCBndhxCD417222x1FsHaUJ1JT9hhGxAmnLRzoSAhvoJxR84fXxCejb7SfWXgPd5aIyJszCIdRxN1RoIS2DhxZRFBUmV/HuvM8B+qMcGPsS7U4X+5WcXm7ESAvnw5jktwcF2PyuU0oGpT+QDJFGhGFYonyNModK6C93k4e29HFDO+6JpxkwIDAQAB",
+   "manifest_version": 3,
+   "name": "YouTube Productivity Filter - Block Distractions & Filter Channels",
+   "permissions": [ "storage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.0.1"
+}

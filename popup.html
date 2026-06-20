@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allowed Channels</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            text-align: left;
+            color: #2c3e50;
+        }
+
+        #channel-list {
+            /* margin-top: 20px; */
+            padding: 10px;
+        }
+
+        /* Input and button styling */
+        #channel-input {
+            width: 70%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #add-channel {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        #add-channel:hover {
+            background-color: #2980b9;
+        }
+
+        /* Styling for the allowed channels list */
+        #allowed-channels {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .channel-item button {
+            padding: 5px 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .channel-item button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Adding spacing around the main content */
+        .container {
+            width: 400px;
+            min-width: 350px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .config-container {
+            width: 90%;
+            min-width: 350px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 1px 1px 6px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Toggle switch styling */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .toggle-label {
+            margin-right: 10px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 20px;
+            transition: 0.4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: #3498db;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(18px);
+        }
+
+        /* shorts-toggle-tooltip */
+        .shorts-toggle-tooltip {
+            font-size: 10px;
+            color: #0000008f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="config-container">
+            <!-- Toggle switch for Filter Activation -->
+            <div class="toggle-container" style="margin-top: 0px;">
+                <label class="toggle-label" for="activate-filter-toggle" style="font-weight: bold; font-size: large;">Activate Youtube Channel Filter</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="activate-filter-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <hr>
+
+            <!-- Toggle switch to block YouTube Shorts -->
+            <div class="toggle-container">
+                <label class="toggle-label" for="shorts-toggle">Block YouTube Shorts</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="shorts-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <span class="shorts-toggle-tooltip">Blocking shorts works only when filter is ON</span>
+
+            <!-- Input to add a new channel -->
+            <h3>Add Channels</h3>
+            <div>
+                <input type="text" id="channel-input" placeholder="Enter channel name" />
+                <button id="add-channel">Add</button>
+            </div>
+        </div>
+
+        <!-- Section to display the list of allowed channels -->
+        <div id="channel-list">
+            <h4>Current Allowed Channels:</h4>
+            <ul id="allowed-channels"></ul>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>
