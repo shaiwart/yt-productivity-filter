@@ -26,17 +26,24 @@ function fetchChannelName(videoId) {
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.items.length > 0) {
-            return data.items[0].snippet.channelTitle;
-        }
-        return null;
+        .then(response => response.json())
+        .then(data => {
+            if (data.items.length > 0) {
+                return data.items[0].snippet.channelTitle;
+            }
+            return null;
+        });
+}
+
+function incrementBlockCount() {
+    chrome.storage.local.get(['totalBlockCount'], function (result) {
+        const count = (result.totalBlockCount || 0) + 1;
+        chrome.storage.local.set({ totalBlockCount: count });
     });
 }
 
 function handleWatchPage(videoId) {
-    chrome.storage.local.get(['activateFilter'], function(result) {
+    chrome.storage.local.get(['activateFilter'], function (result) {
         if (result.activateFilter !== true) return;
 
         fetchChannelName(videoId)
@@ -48,6 +55,7 @@ function handleWatchPage(videoId) {
                 console.log("channelName", channelName);
                 isChannelAllowed(channelName).then((isAllowed) => {
                     if (!isAllowed) {
+                        incrementBlockCount();
                         window.location.href = 'blocked.html';
                     }
                 });
@@ -57,8 +65,9 @@ function handleWatchPage(videoId) {
 }
 
 function handleShortsPage() {
-    chrome.storage.local.get(['activateFilter', 'blockShorts'], function(result) {
+    chrome.storage.local.get(['activateFilter', 'blockShorts'], function (result) {
         if (result.activateFilter === true && result.blockShorts === true) {
+            incrementBlockCount();
             window.location.href = 'blocked.html';
         }
     });

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allowed Channels</title>
     <style>
-        /* Basic styling */
+        /* ------------------------------------- Basic styling */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7fa;
@@ -23,7 +24,7 @@
             padding: 10px;
         }
 
-        /* Input and button styling */
+        /* ------------------------------------- Input and button styling */
         #channel-input {
             width: 70%;
             padding: 10px;
@@ -47,7 +48,7 @@
             background-color: #2980b9;
         }
 
-        /* Styling for the allowed channels list */
+        /* ------------------------------------- Styling for the allowed channels list */
         #allowed-channels {
             list-style-type: none;
             padding: 0;
@@ -81,7 +82,7 @@
             background-color: #c0392b;
         }
 
-        /* Adding spacing around the main content */
+        /* ------------------------------------- Adding spacing around the main content */
         .container {
             width: 400px;
             min-width: 350px;
@@ -91,6 +92,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .config-container {
             width: 90%;
             min-width: 350px;
@@ -100,7 +102,7 @@
             box-shadow: 1px 1px 6px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Toggle switch styling */
+        /* ------------------------------------- Toggle switch styling */
         .toggle-container {
             display: flex;
             align-items: center;
@@ -150,18 +152,69 @@
             transition: 0.4s;
         }
 
-        input:checked + .slider {
+        input:checked+.slider {
             background-color: #3498db;
         }
 
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(18px);
         }
 
-        /* shorts-toggle-tooltip */
+        /* ------------------------------------- shorts-toggle-tooltip */
         .shorts-toggle-tooltip {
             font-size: 10px;
             color: #0000008f;
+        }
+
+
+        /* ------------------------------------- review prompt */
+        #review-prompt {
+            background-color: #eaf4fb;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 14px;
+            font-size: 13px;
+            color: #2c3e50;
+        }
+
+        #review-prompt p {
+            margin: 0 0 8px 0;
+        }
+
+        #review-prompt-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        #review-rate-btn {
+            padding: 5px 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        #review-rate-btn:hover {
+            background-color: #2980b9;
+        }
+
+        #review-later-btn,
+        #review-never-btn {
+            padding: 5px 12px;
+            background-color: transparent;
+            color: #7f8c8d;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        #review-later-btn:hover,
+        #review-never-btn:hover {
+            background-color: #ecf0f1;
         }
     </style>
 </head>
@@ -169,9 +222,22 @@
 <body>
     <div class="container">
         <div class="config-container">
+            <!-- Review prompt banner -->
+            <div id="review-prompt" style="display: none;">
+                <p>Enjoying the filter? You've blocked a bunch of distractions! A quick review helps
+                    others find it.</p>
+                <div id="review-prompt-actions">
+                    <button id="review-rate-btn">Rate it</button>
+                    <button id="review-later-btn">Maybe later</button>
+                    <button id="review-never-btn">Don't ask again</button>
+                </div>
+            </div>
+            <hr>
+            
             <!-- Toggle switch for Filter Activation -->
             <div class="toggle-container" style="margin-top: 0px;">
-                <label class="toggle-label" for="activate-filter-toggle" style="font-weight: bold; font-size: large;">Activate Youtube Channel Filter</label>
+                <label class="toggle-label" for="activate-filter-toggle"
+                    style="font-weight: bold; font-size: large;">Activate Youtube Channel Filter</label>
                 <label class="toggle-switch">
                     <input type="checkbox" id="activate-filter-toggle">
                     <span class="slider"></span>
