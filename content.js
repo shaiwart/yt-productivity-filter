@@ -6,12 +6,14 @@ function extractVideoId(url) {
 
 function isChannelAllowed(channelName) {
     return new Promise((resolve) => {
-        chrome.storage.local.get("allowedChannels", (data) => {
-            const allowedChannelsList = data.allowedChannels || [];
-            console.log("allowed_channel_list_in_content.js", allowedChannelsList);
+        chrome.storage.local.get("groups", (data) => {
+            const groups = data.groups || [];
+            const activeChannels = groups
+                .filter(group => group.isActive)
+                .flatMap(group => group.channels);
 
-            const allowed = allowedChannelsList.some(allowedChannel =>
-                allowedChannel.toLowerCase() === channelName.toLowerCase()
+            const allowed = activeChannels.some(ch =>
+                ch.toLowerCase() === channelName.toLowerCase()
             );
 
             resolve(allowed);

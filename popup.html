@@ -17,72 +17,10 @@
         h3 {
             text-align: left;
             color: #2c3e50;
+            margin: 0 0 10px 0;
         }
 
-        #channel-list {
-            /* margin-top: 20px; */
-            padding: 10px;
-        }
-
-        /* ------------------------------------- Input and button styling */
-        #channel-input {
-            width: 70%;
-            padding: 10px;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        #add-channel {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        #add-channel:hover {
-            background-color: #2980b9;
-        }
-
-        /* ------------------------------------- Styling for the allowed channels list */
-        #allowed-channels {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .channel-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #ecf0f1;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            font-size: 16px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .channel-item button {
-            padding: 5px 10px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .channel-item button:hover {
-            background-color: #c0392b;
-        }
-
-        /* ------------------------------------- Adding spacing around the main content */
+        /* ------------------------------------- Container */
         .container {
             width: 400px;
             min-width: 350px;
@@ -166,6 +104,170 @@
             color: #0000008f;
         }
 
+        /* ------------------------------------- Group cards */
+        #groups-container {
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .group-card {
+            border: 2px solid #dde3ea;
+            border-radius: 8px;
+            padding: 12px;
+            background-color: #f9fbfc;
+            transition: border-color 0.2s;
+        }
+
+        .group-card.group-active {
+            border-color: #3498db;
+            background-color: #eaf4fb;
+        }
+
+        .group-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .group-name-input {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2c3e50;
+            border: none;
+            border-bottom: 1px dashed transparent;
+            background: transparent;
+            outline: none;
+            flex: 1;
+            margin-right: 10px;
+            cursor: text;
+        }
+
+        .group-name-input:hover,
+        .group-name-input:focus {
+            border-bottom-color: #3498db;
+        }
+
+        /* ------------------------------------- Delete group button */
+        .delete-group-btn {
+            margin-left: 8px;
+            padding: 2px 7px;
+            background-color: transparent;
+            color: #aaa;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .delete-group-btn:hover {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+            color: white;
+        }
+
+        /* ------------------------------------- Channel list inside group */
+        .allowed-channels {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ecf0f1;
+            padding: 8px 10px;
+            border-radius: 5px;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .group-active .channel-item {
+            background-color: #d6eaf8;
+        }
+
+        .channel-item button {
+            padding: 3px 8px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+
+        .channel-item button:hover {
+            background-color: #c0392b;
+        }
+
+        /* ------------------------------------- Add channel row inside group */
+        .add-channel-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .channel-input {
+            flex: 1;
+            padding: 7px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        .add-btn {
+            padding: 7px 14px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .add-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* ------------------------------------- New group row */
+        .new-group-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        #new-group-input {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        #new-group-btn {
+            padding: 8px 14px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        #new-group-btn:hover {
+            background-color: #27ae60;
+        }
 
         /* ------------------------------------- review prompt */
         #review-prompt {
@@ -233,7 +335,7 @@
                 </div>
             </div>
             <hr>
-            
+
             <!-- Toggle switch for Filter Activation -->
             <div class="toggle-container" style="margin-top: 0px;">
                 <label class="toggle-label" for="activate-filter-toggle"
@@ -256,18 +358,17 @@
             </div>
             <span class="shorts-toggle-tooltip">Blocking shorts works only when filter is ON</span>
 
-            <!-- Input to add a new channel -->
-            <h3>Add Channels</h3>
-            <div>
-                <input type="text" id="channel-input" placeholder="Enter channel name" />
-                <button id="add-channel">Add</button>
-            </div>
-        </div>
+            <hr>
 
-        <!-- Section to display the list of allowed channels -->
-        <div id="channel-list">
-            <h4>Current Allowed Channels:</h4>
-            <ul id="allowed-channels"></ul>
+            <!-- Channel groups -->
+            <h3>Channel Groups</h3>
+            <div id="groups-container"></div>
+
+            <!-- Create new group -->
+            <div class="new-group-row">
+                <input type="text" id="new-group-input" placeholder="New group name" />
+                <button id="new-group-btn">+ New Group</button>
+            </div>
         </div>
     </div>
 
